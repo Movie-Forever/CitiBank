@@ -11,7 +11,43 @@ customers_bp = Blueprint('customers', __name__, url_prefix='/api/customers')
 # GET /api/customers - Retrieve all customers
 @customers_bp.route('', methods=['GET'])
 def get_all_customers():
-    """Get all customers"""
+    """
+    Get all bank customers
+    ---
+    tags:
+      - Customers
+    responses:
+      200:
+        description: List of all customers
+        schema:
+          type: object
+          properties:
+            customers:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: John Doe
+                  email:
+                    type: string
+                    example: john.doe@example.com
+                  account_ids:
+                    type: array
+                    items:
+                      type: integer
+                    example: [1000, 1001]
+                  created_at:
+                    type: string
+                    example: "2026-06-02T10:42:50.165410"
+            count:
+              type: integer
+              example: 4
+    """
     customers = [customer.to_dict(include_accounts=True) for customer in DataStore.customers]
     return jsonify({'customers': customers, 'count': len(customers)}), 200
 
@@ -45,7 +81,46 @@ def get_customer_by_name():
 # GET /api/customers/premium - Get premium customers (total balance > $10,000)
 @customers_bp.route('/premium', methods=['GET'])
 def get_all_premium_customers():
-    """Get customers with total balance above $10,000"""
+    """
+    Get premium customers with total balance above threshold
+    ---
+    tags:
+      - Customers
+    responses:
+      200:
+        description: List of premium customers (total balance > $10,000)
+        schema:
+          type: object
+          properties:
+            premium_customers:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: John Doe
+                  email:
+                    type: string
+                    example: john.doe@example.com
+                  account_ids:
+                    type: array
+                    items:
+                      type: integer
+                    example: [1000, 1001]
+                  total_balance:
+                    type: number
+                    example: 30000.0
+            count:
+              type: integer
+              example: 2
+            threshold:
+              type: number
+              example: 10000.0
+    """
     premium_threshold = 10000.0
     premium_customers = []
     

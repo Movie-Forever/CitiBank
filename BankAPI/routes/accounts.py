@@ -11,7 +11,44 @@ accounts_bp = Blueprint('accounts', __name__, url_prefix='/api/accounts')
 # GET /api/accounts - Retrieve all accounts
 @accounts_bp.route('', methods=['GET'])
 def get_all_accounts():
-    """Get all accounts"""
+    """
+    Get all bank accounts
+    ---
+    tags:
+      - Accounts
+    responses:
+      200:
+        description: List of all accounts
+        schema:
+          type: object
+          properties:
+            accounts:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1000
+                  account_number:
+                    type: string
+                    example: ACC001
+                  account_type:
+                    type: string
+                    example: Savings
+                  balance:
+                    type: number
+                    example: 25000.00
+                  customer_id:
+                    type: integer
+                    example: 1
+                  created_at:
+                    type: string
+                    example: "2026-06-02T10:42:50.165410"
+            count:
+              type: integer
+              example: 6
+    """
     accounts = [account.to_dict() for account in DataStore.accounts]
     return jsonify({'accounts': accounts, 'count': len(accounts)}), 200
 
@@ -19,7 +56,41 @@ def get_all_accounts():
 # GET /api/accounts/{id} - Retrieve account by ID
 @accounts_bp.route('/<int:account_id>', methods=['GET'])
 def get_account_by_id(account_id):
-    """Get account by ID"""
+    """
+    Get a specific account by ID
+    ---
+    tags:
+      - Accounts
+    parameters:
+      - name: account_id
+        in: path
+        type: integer
+        required: true
+        example: 1000
+    responses:
+      200:
+        description: Account details
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1000
+            account_number:
+              type: string
+              example: ACC001
+            account_type:
+              type: string
+              example: Savings
+            balance:
+              type: number
+              example: 25000.00
+            customer_id:
+              type: integer
+              example: 1
+      404:
+        description: Account not found
+    """
     account = DataStore.get_account_by_id(account_id)
     if not account:
         return jsonify({'error': 'Account not found'}), 404
@@ -53,7 +124,43 @@ def get_account_by_name():
 # POST /api/accounts - Create new account
 @accounts_bp.route('', methods=['POST'])
 def create_account():
-    """Create a new account and assign to a customer"""
+    """
+    Create a new bank account
+    ---
+    tags:
+      - Accounts
+    parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          required:
+            - account_number
+            - account_type
+            - customer_id
+          properties:
+            account_number:
+              type: string
+              example: ACC007
+            account_type:
+              type: string
+              enum: [Savings, Checking]
+              example: Savings
+            balance:
+              type: number
+              example: 50000.00
+            customer_id:
+              type: integer
+              example: 1
+    responses:
+      201:
+        description: Account created successfully
+      400:
+        description: Invalid input
+      404:
+        description: Customer not found
+    """
     data = request.get_json()
     
     if not data:

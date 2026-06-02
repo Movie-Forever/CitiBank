@@ -3,6 +3,7 @@ Banking REST API - Flask Application
 Main entry point for the Banking API
 """
 from flask import Flask, jsonify
+from flasgger import Flasgger
 from data_store import DataStore
 from routes import customers_bp, accounts_bp
 
@@ -10,6 +11,9 @@ from routes import customers_bp, accounts_bp
 def create_app():
     """Create and configure the Flask application"""
     app = Flask(__name__)
+    
+    # Initialize Swagger/Flasgger
+    Flasgger(app)
     
     # Initialize data store with seed data
     DataStore.initialize()
