@@ -1,0 +1,144 @@
+### Banking REST API - Test Endpoints
+### Use with VS Code REST Client extension
+
+@baseUrl = http://localhost:5000
+@customerId = 1
+@customerId2 = 2
+@accountId = 1001
+@newCustomerId = 5
+@newAccountId = 1007
+
+### Health Check
+GET {{baseUrl}}/health
+
+### ============================================
+### CUSTOMER ENDPOINTS
+### ============================================
+
+### 1. Get All Customers
+GET {{baseUrl}}/api/customers
+
+### 2. Get Customer by ID
+GET {{baseUrl}}/api/customers/{{customerId}}
+
+### 3. Search Customers by Name
+GET {{baseUrl}}/api/customers/search?name=John
+
+### 4. Get Premium Customers (balance > $10,000)
+GET {{baseUrl}}/api/customers/premium
+
+### 5. Create New Customer
+POST {{baseUrl}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "Alice Williams",
+  "email": "alice.williams@example.com"
+}
+
+### 6. Create Another Customer for Testing
+POST {{baseUrl}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "Michael Brown",
+  "email": "michael.brown@example.com"
+}
+
+### 7. Update Customer
+PUT {{baseUrl}}/api/customers/{{customerId}}
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com"
+}
+
+### 8. Delete Customer
+DELETE {{baseUrl}}/api/customers/{{customerId}}
+
+### ============================================
+### ACCOUNT ENDPOINTS
+### ============================================
+
+### 9. Get All Accounts
+GET {{baseUrl}}/api/accounts
+
+### 10. Get Account by ID
+GET {{baseUrl}}/api/accounts/{{accountId}}
+
+### 11. Search Accounts by Customer Name
+GET {{baseUrl}}/api/accounts/search?name=Jane
+
+### 12. Create New Account
+POST {{baseUrl}}/api/accounts
+Content-Type: application/json
+
+{
+  "account_number": "ACC007",
+  "account_type": "Savings",
+  "balance": 50000.00,
+  "customer_id": 1
+}
+
+### 13. Create Checking Account
+POST {{baseUrl}}/api/accounts
+Content-Type: application/json
+
+{
+  "account_number": "ACC008",
+  "account_type": "Checking",
+  "balance": 10000.00,
+  "customer_id": 2
+}
+
+### 14. Update Account
+PUT {{baseUrl}}/api/accounts/{{accountId}}
+Content-Type: application/json
+
+{
+  "balance": 30000.00,
+  "account_type": "Checking"
+}
+
+### 15. Delete Account
+DELETE {{baseUrl}}/api/accounts/{{accountId}}
+
+### ============================================
+### ERROR HANDLING TESTS
+### ============================================
+
+### Test 404 - Non-existent Customer
+GET {{baseUrl}}/api/customers/999
+
+### Test 404 - Non-existent Account
+GET {{baseUrl}}/api/accounts/999
+
+### Test 400 - Invalid Create Customer
+POST {{baseUrl}}/api/customers
+Content-Type: application/json
+
+{
+  "name": ""
+}
+
+### Test 400 - Invalid Create Account (missing customer)
+POST {{baseUrl}}/api/accounts
+Content-Type: application/json
+
+{
+  "account_number": "ACC999",
+  "account_type": "Savings",
+  "balance": 1000.00
+}
+
+### Test 404 - Create Account for Non-existent Customer
+POST {{baseUrl}}/api/accounts
+Content-Type: application/json
+
+{
+  "account_number": "ACC999",
+  "account_type": "Savings",
+  "balance": 1000.00,
+  "customer_id": 999
+}
