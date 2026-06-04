@@ -92,6 +92,6 @@ if __name__ == '__main__':
     if app:
         debug = os.getenv('FLASK_ENV') != 'production'
         port = int(os.getenv('PORT', '5000'))
-        app.run(debug=debug, host='0.0.0.0', port=port)
+        app.run(debug=debug, host='0.0.0.0', port=port, use_reloader=False)
     else:
         print("Failed to create app due to database connection error")
