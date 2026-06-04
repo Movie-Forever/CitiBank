@@ -1,0 +1,83 @@
+.app {
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 2rem 0 0;
+  background:
+    radial-gradient(ellipse at top right, rgba(255, 191, 88, 0.25), transparent 34rem),
+    linear-gradient(105deg, #fff2f7 0%, #fff5f1 48%, #fff9db 100%);
+}
+
+.app-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0 auto 1.25rem;
+  max-width: 64rem;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+.nav-btn,
+.btn-primary,
+.search-form button,
+.btn-edit {
+  background: linear-gradient(135deg, #ffb36d, #ea71b8);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.nav-btn {
+  border-radius: 4px;
+  box-shadow: 0 0.7rem 1.25rem rgba(234, 113, 184, 0.28);
+  min-width: 8.6rem;
+  padding: 0.9rem 1.35rem;
+  text-transform: uppercase;
+}
+
+.nav-btn:not(.active) {
+  background: #fff;
+  box-shadow: inset 0 0 0 2px rgba(45, 5, 216, 0.16);
+  color: #2d05d8;
+}
+
+.nav-btn:hover,
+.btn-primary:hover,
+.search-form button:hover,
+.btn-edit:hover {
+  filter: saturate(1.08);
+  transform: translateY(-2px);
+}
+
+.app-main {
+  margin: 0 auto;
+  max-width: 64rem;
+  padding: 0 1.5rem 3rem;
+  width: 100%;
+}
+
+.app-footer {
+  color: #716799;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+@media (max-width: 540px) {
+  .app {
+    padding-top: 1rem;
+  }
+
+  .app-nav,
+  .app-main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .nav-btn {
+    flex: 1;
+    min-width: 0;
+  }
+}

@@ -1,0 +1,238 @@
+.customers-container {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  box-shadow: 0 1.5rem 3.5rem rgba(67, 45, 122, 0.16);
+  padding: 1.45rem;
+}
+
+.customers-container h2 {
+  color: #2d05d8;
+  font-size: 1.45rem;
+  font-weight: 950;
+  margin-bottom: 1.2rem;
+}
+
+.controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.search-form {
+  display: flex;
+  flex: 1;
+  gap: 0.6rem;
+  min-width: min(100%, 18rem);
+}
+
+.search-form input,
+.form-container input,
+.form-container select {
+  background: #fff;
+  border: 1px solid #eaddeb;
+  border-radius: 6px;
+  color: #20145f;
+  min-height: 2.9rem;
+  padding: 0.75rem 0.95rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-form input:focus,
+.form-container input:focus,
+.form-container select:focus {
+  border-color: #8a69f0;
+  box-shadow: 0 0 0 4px rgba(138, 105, 240, 0.14);
+  outline: none;
+}
+
+.search-form button,
+.btn-primary,
+.btn-secondary,
+.filter-buttons button,
+.btn-edit,
+.btn-delete {
+  border-radius: 5px;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.filter-buttons button,
+.btn-secondary {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #eaddeb;
+  color: #31206f;
+  cursor: pointer;
+  font-weight: 850;
+  transition: color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.filter-buttons button.active,
+.filter-buttons button:hover,
+.btn-secondary:hover {
+  box-shadow: inset 0 0 0 2px #2d05d8;
+  color: #2d05d8;
+}
+
+.btn-primary {
+  box-shadow: 0 0.7rem 1.25rem rgba(234, 113, 184, 0.25);
+}
+
+.form-modal {
+  align-items: center;
+  background: rgba(33, 19, 81, 0.48);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1000;
+}
+
+.form-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1.5rem 4rem rgba(25, 14, 56, 0.32);
+  max-width: 28rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.form-container h3 {
+  color: #2d05d8;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.form-container form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.form-buttons button {
+  flex: 1;
+}
+
+.customers-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+}
+
+.customer-card {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 246, 251, 0.94)),
+    #fff;
+  border: 1px solid rgba(234, 221, 235, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 0.85rem 1.8rem rgba(61, 42, 116, 0.1);
+  min-height: 15rem;
+  padding: 1.1rem;
+  position: relative;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.customer-card::before {
+  background: linear-gradient(135deg, #2d05d8, #ef6e9e);
+  border-radius: 999px;
+  content: "";
+  height: 0.35rem;
+  left: 1.1rem;
+  position: absolute;
+  right: 1.1rem;
+  top: 0.9rem;
+}
+
+.customer-card:hover {
+  box-shadow: 0 1.15rem 2.2rem rgba(61, 42, 116, 0.16);
+  transform: translateY(-3px);
+}
+
+.customer-card h4 {
+  color: #20145f;
+  font-size: 1.15rem;
+  margin: 1.15rem 0 0.8rem;
+}
+
+.customer-card p {
+  color: #6d6391;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.45rem;
+  overflow-wrap: anywhere;
+}
+
+.premium-badge {
+  background: #fff3cb;
+  border: 1px solid #ffd67c;
+  border-radius: 6px;
+  color: #7f5414 !important;
+  font-weight: 850;
+  margin: 0.75rem 0 !important;
+  padding: 0.55rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.btn-edit,
+.btn-delete {
+  cursor: pointer;
+  flex: 1;
+  font-weight: 850;
+}
+
+.btn-delete {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #ffc9d1;
+  color: #d53d55;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.btn-delete:hover {
+  background: #d53d55;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 620px) {
+  .customers-container {
+    padding: 1rem;
+  }
+
+  .search-form,
+  .filter-buttons {
+    width: 100%;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .filter-buttons button,
+  .filter-buttons .btn-primary {
+    flex: 1;
+  }
+}

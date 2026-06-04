@@ -1,0 +1,233 @@
+.accounts-container {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  box-shadow: 0 1.5rem 3.5rem rgba(67, 45, 122, 0.16);
+  padding: 1.45rem;
+}
+
+.accounts-container h2 {
+  color: #2d05d8;
+  font-size: 1.45rem;
+  font-weight: 950;
+  margin-bottom: 1.2rem;
+}
+
+.accounts-table {
+  overflow-x: auto;
+}
+
+.accounts-table table {
+  background: #fff;
+  border: 1px solid #eaddeb;
+  border-collapse: separate;
+  border-radius: 8px;
+  border-spacing: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.accounts-table th {
+  background: #2d05d8;
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 900;
+  padding: 0.95rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.accounts-table td {
+  border-bottom: 1px solid #f0e7ef;
+  color: #5e5484;
+  padding: 0.95rem;
+  vertical-align: middle;
+}
+
+.accounts-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.accounts-table tr:hover td {
+  background: #fff8fb;
+}
+
+.accounts-table td:nth-child(1),
+.accounts-table td:nth-child(3) {
+  color: #20145f;
+  font-weight: 850;
+}
+
+.accounts-table .btn-edit,
+.accounts-table .btn-delete {
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 850;
+  margin: 0.15rem 0.3rem 0.15rem 0;
+  min-height: 2.35rem;
+  padding: 0.55rem 0.85rem;
+}
+
+.accounts-table .btn-delete {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #ffc9d1;
+  color: #d53d55;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.accounts-table .btn-delete:hover {
+  background: #d53d55;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.search-form {
+  display: flex;
+  flex: 1;
+  gap: 0.6rem;
+  min-width: min(100%, 18rem);
+}
+
+.search-form input,
+.form-container input,
+.form-container select {
+  background: #fff;
+  border: 1px solid #eaddeb;
+  border-radius: 6px;
+  color: #20145f;
+  min-height: 2.9rem;
+  padding: 0.75rem 0.95rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-form input:focus,
+.form-container input:focus,
+.form-container select:focus {
+  border-color: #8a69f0;
+  box-shadow: 0 0 0 4px rgba(138, 105, 240, 0.14);
+  outline: none;
+}
+
+.search-form button,
+.btn-primary,
+.btn-secondary {
+  border-radius: 5px;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-primary {
+  box-shadow: 0 0.7rem 1.25rem rgba(234, 113, 184, 0.25);
+}
+
+.btn-secondary {
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #eaddeb;
+  color: #31206f;
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.btn-secondary:hover {
+  box-shadow: inset 0 0 0 2px #2d05d8;
+  color: #2d05d8;
+}
+
+.form-modal {
+  align-items: center;
+  background: rgba(33, 19, 81, 0.48);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1000;
+}
+
+.form-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1.5rem 4rem rgba(25, 14, 56, 0.32);
+  max-width: 30rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.form-container h3 {
+  color: #2d05d8;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.form-container form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.form-buttons button {
+  flex: 1;
+}
+
+@media (max-width: 720px) {
+  .accounts-container {
+    padding: 1rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .accounts-table table,
+  .accounts-table thead,
+  .accounts-table tbody,
+  .accounts-table th,
+  .accounts-table td,
+  .accounts-table tr {
+    display: block;
+  }
+
+  .accounts-table thead {
+    display: none;
+  }
+
+  .accounts-table tr {
+    border-bottom: 1px solid #eaddeb;
+    padding: 0.8rem;
+  }
+
+  .accounts-table td {
+    border: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.45rem 0;
+  }
+
+  .accounts-table td::before {
+    color: #897fa7;
+    content: attr(data-label);
+    font-size: 0.72rem;
+    font-weight: 900;
+    margin-right: 1rem;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: banking-api
+    env: python
+    rootDir: BankAPI
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB_NAME
+        value: BankCluster
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: SEED_DATABASE
+        value: false
