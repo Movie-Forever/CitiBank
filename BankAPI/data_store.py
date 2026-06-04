@@ -2,6 +2,7 @@
 MongoDB Data Store for Banking API (with fallback to in-memory)
 """
 import os
+import certifi
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -32,7 +33,12 @@ class DataStore:
             if not mongo_uri:
                 raise ValueError("MONGODB_URI environment variable not set")
             
-            cls.client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
+            cls.client = MongoClient(
+                mongo_uri,
+                tls=True,
+                tlsCAFile=certifi.where(),
+                serverSelectionTimeoutMS=20000
+            )
             
             # Verify connection
             cls.client.admin.command('ping')
